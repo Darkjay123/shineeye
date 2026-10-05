@@ -1,0 +1,10 @@
+{
+  "name": "shineeye",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Paste a forwarded investment pitch and see the Ponzi warning signs, with the money math, in English or Pidgin.",
+  "scripts": { "start": "node server.js", "test": "node --test" },
+  "engines": { "node": ">=20" },
+  "license": "MIT"
+}
