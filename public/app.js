@@ -88,6 +88,7 @@ function setLang(l) {
 // On the static site (or if the server is unreachable) the same rules run right here in the browser,
 // so the message never leaves the phone.
 async function checkText(value) {
+  if (location.hostname.endsWith('github.io')) return check(value);
   try {
     const res = await fetch('api/check', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ text: value }) });
     const type = res.headers.get('content-type') || '';

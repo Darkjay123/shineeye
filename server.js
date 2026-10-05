@@ -4,6 +4,14 @@ import { extname, join, normalize } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { check } from './public/lib/check.js';
 
+try {
+  const env = await readFile(new URL('.env', import.meta.url), 'utf8');
+  for (const line of env.split('\n')) {
+    const m = line.match(/^\s*([A-Z_][A-Z0-9_]*)\s*=\s*(.*)\s*$/);
+    if (m && !process.env[m[1]]) process.env[m[1]] = m[2].replace(/^['"]|['"]$/g, '');
+  }
+} catch {}
+
 const root = join(fileURLToPath(new URL('.', import.meta.url)), 'public');
 const PORT = Number(process.env.PORT) || 8080;
 const MAX_CHARS = 20_000;

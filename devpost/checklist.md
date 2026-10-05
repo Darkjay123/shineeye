@@ -19,7 +19,7 @@ Build mode: fast (John asked for speed; approved under his delegation, 5 Oct 202
   Learner check: Run `node server.js`, open localhost:8080, paste the example, see High risk and the ₦409.6 million line.
   Commit: `Add money math, red-flag rules and check endpoint`
 
-- [ ] **2. The real phone-first page: Pidgin/English, highlights, Copy for WhatsApp**
+- [x] **2. The real phone-first page: Pidgin/English, highlights, Copy for WhatsApp**
   Becomes usable: The full designed result card, language toggle, highlighted message and one-tap WhatsApp summary.
   Why now: Turns the working kernel into the product the video shows.
   PRD ref: `prd.md > The Core Journey`, `prd.md > Screens and Layout`, `prd.md > Look and Feel`, `prd.md > Copy for WhatsApp`, `prd.md > States and Boundaries`
@@ -29,7 +29,7 @@ Build mode: fast (John asked for speed; approved under his delegation, 5 Oct 202
   Learner check: Toggle Pidgin/English on a result, tap a flag, tap Copy for WhatsApp and paste it somewhere.
   Commit: `Add phone-first result page with Pidgin and WhatsApp copy`
 
-- [ ] **3. Optional AI second look that can't invent evidence**
+- [x] **3. Optional AI second look that can't invent evidence**
   Becomes usable: With GEMINI_API_KEY set, extra flags appear marked "AI"; without it, nothing changes.
   Why now: Coverage on top of a kernel already proven; last because the app must stand without it.
   PRD ref: `prd.md > States and Boundaries`
@@ -53,3 +53,5 @@ Build mode: fast (John asked for speed; approved under his delegation, 5 Oct 202
 - [ ] Learning wrap-up and app map completed
 
 ## Revisions
+- Slice 2: checker moved to `public/lib/` so it runs in the browser; deployed to GitHub Pages (https://darkjay123.github.io/shineeye/). Verified on the live site: English example → "Danger o", 8 flags each quoted and highlighted, money math ₦409.6 million / 4,096x / 4,095 people.
+- Slice 3: AI second look verified with stubbed model replies (13 tests pass). Not yet run against a real Gemini key.
