@@ -110,3 +110,8 @@ bwai/
 - Open: whether a Gemini key is available. Not blocking.
 
 Approval: John delegated all planning decisions to Fo on 5 Oct 2026 ("bro answer all questions and lets move on"); scope, PRD and spec approved under that delegation.
+
+## Build Revision (slice 2)
+- The checker modules (`money.js`, `flags.js`, `check.js`) moved from `src/` to `public/lib/` so the same code runs on the server and in the browser. Reason: a free static deployment (GitHub Pages) for judges to try, and a privacy win: on the static site the pasted message never leaves the phone. The server still adds the optional AI second look; `src/ai.js` stays server-only.
+- The page calls `/api/check` and falls back to running the rules in the browser when no server answers.
+- Deployment: GitHub Pages via a GitHub Actions workflow publishing `public/`.

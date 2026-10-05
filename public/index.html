@@ -1,15 +1,46 @@
 <!doctype html>
 <html lang="en">
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ShineEye</title>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ShineEye: check that investment message before you pay</title>
+<meta name="description" content="Paste a forwarded investment pitch and see the Ponzi warning signs, with the money math, in English or Pidgin.">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👁</text></svg>">
+</head>
 <body>
-<h1>ShineEye</h1>
-<textarea id="text" rows="10" cols="50"></textarea><br><button id="go">Check</button>
-<pre id="out"></pre>
-<script>
-document.getElementById('go').onclick = async () => {
-  const r = await fetch('/api/check', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ text: document.getElementById('text').value }) });
-  document.getElementById('out').textContent = JSON.stringify(await r.json(), null, 2);
-};
-</script>
-</body></html>
+<main>
+  <header>
+    <div class="brand"><span class="eye" aria-hidden="true"></span>ShineEye</div>
+    <div class="lang" role="group" aria-label="Language">
+      <button data-lang="pcm" aria-pressed="true">Pidgin</button>
+      <button data-lang="en" aria-pressed="false">English</button>
+    </div>
+  </header>
+  <p class="tagline" data-t="tagline"></p>
+
+  <section class="card input">
+    <textarea id="text" rows="7" data-ph="placeholder" aria-label="Investment message"></textarea>
+    <div class="examples"><span data-t="examples"></span>
+      <button class="chip" data-example="a" data-t="exampleA"></button>
+      <button class="chip" data-example="b" data-t="exampleB"></button>
+    </div>
+    <button id="go" class="primary" data-t="check" disabled></button>
+    <p id="note" class="note" role="status"></p>
+  </section>
+
+  <section id="result" class="result" hidden aria-live="polite">
+    <div id="verdict" class="verdict"><h2></h2><p></p></div>
+    <div id="math" class="card math"><h3 data-t="mathTitle"></h3><p></p></div>
+    <div class="card"><h3 id="flagsTitle"></h3><ol id="flags" class="flags"></ol></div>
+    <div class="card"><h3 data-t="messageTitle"></h3><div id="message" class="message"></div></div>
+    <div class="card before"><h3 data-t="beforeTitle"></h3><ul id="before"></ul></div>
+    <button id="copy" class="primary whatsapp" data-t="copyBtn"></button>
+    <p id="copied" class="note" role="status"></p>
+  </section>
+
+  <footer><p data-t="footer"></p><p><a href="https://sec.gov.ng/cmos" target="_blank" rel="noopener">sec.gov.ng/cmos</a></p></footer>
+</main>
+<script type="module" src="app.js"></script>
+</body>
+</html>

@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { moneyMath, formatNaira, formatCount } from '../src/money.js';
-import { check } from '../src/check.js';
+import { moneyMath, formatNaira, formatCount } from '../public/lib/money.js';
+import { check } from '../public/lib/check.js';
 import * as F from './fixtures.js';
 
 const ids = (r) => r.flags.map((f) => f.id).sort();
